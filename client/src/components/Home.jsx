@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import bgImg from '../assets/Home1.jpeg'
+import bgImg from '../assets/Home.jpg'
 import arrow from '../assets/download.png'
+import ChitkUni from '../assets/ChitkUni.png'
+import rectangle from '../assets/rectangle.png'
+import '../App.css'
 
 export default function Home() {
     return (
-        <div className='h-[100vh] bg-cover' style={{ backgroundImage: `url(${bgImg})` }}>
-            <nav className='flex flex-col'>
-                <div className="w-full flex justify-end">
+        <div >
+            <nav className='flex flex-col h-[100vh] bg-cover' style={{ backgroundImage: `url(${bgImg})` }}>
+                <div className="w-full flex justify-end my-4">
                     <Link to="/" className="text-white mt-3 mr-12 p-2 font-normal font-sans text-lg hover:border-b-4 hover:border-red-600">
                         HOME
                     </Link>
@@ -23,8 +26,8 @@ export default function Home() {
                         </Link>
                     </div>
                 </div>
-                <div className='h-96 flex flex-col justify-center align-center'>
-                    <div className='text-gray-100 flex justify-center align-center text-6xl font-medium'>
+                <div className='h-96 flex flex-col justify-center align-center head'>
+                    <div className='text-gray-300 flex justify-center align-center text-6xl font-medium pl-12'>
                         Discover around you
                     </div>
                     <div className='text-white flex justify-center align-center text-8xl font-bold'>
@@ -32,14 +35,35 @@ export default function Home() {
                     </div>
                 </div>
                 <div className='flex flex-col justify-center '>
-                    <div className='text-white flex justify-center align-center text-4xl font-medium'>
+                    <div className='text-white flex justify-center align-center text-3xl font-normal'>
                         Discover here
                     </div>
                     <div className='w-full h-14 flex justify-center'>
-                        <img src={arrow} alt="arrow" className='w-14 h-14 m-4' />
+                        <img src={arrow} alt="arrow" className='w-10 h-10 m-4' />
                     </div>
                 </div>
             </nav>
+
+            <div className='my-16'>
+                <div className='text-6xl font-extrabold mx-10'>EXPLORE AT CHITKARA</div>
+                <div className='my-8 flex'>
+                    <div className='w-56 h-72 bg-red-500'></div>
+                    <img src={ChitkUni} alt="Chitkara University" className='w-[35vw] h-[39vh] mx-6' />
+                    <img src={rectangle} alt="" className='w-[47vw] h-[39vh]' />
+                </div>
+                <div className="flex gap-16 mx-24 my-10">
+                    <Link to="https://maps.app.goo.gl/qzqUPcT2Rhm7iFVe6" target='_blank'>
+                    <button className="text-xl bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-transform hover:translate-y-[-2px]" >
+                        View Location
+                    </button>
+                    </Link>
+                    <Link to="https://www.chitkarauniversity.edu.in/" target="_blank" rel="noopener noreferrer">
+                        <button className="text-xl text-red-500 hover:bg-red-100 border-[.2vw] border-red-500 font-bold py-2 px-4 rounded transition-transform hover:translate-y-[-2px]">
+                            Visit Website
+                        </button>
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 }
