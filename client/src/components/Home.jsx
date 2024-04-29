@@ -49,7 +49,7 @@ export default function Home() {
                 <div className='my-8 flex'>
                     <div className='w-56 h-72 bg-red-500'></div>
                     <img src={ChitkUni} alt="Chitkara University" className='w-[35vw] h-[39vh] mx-6' />
-                    <img src={rectangle} alt="" className='w-[47vw] h-[39vh]' />
+                    <img src={rectangle} alt="bg" className='w-[47vw] h-[39vh]' />
                 </div>
                 <div className="flex gap-16 mx-24 my-10">
                     <Link to="https://maps.app.goo.gl/qzqUPcT2Rhm7iFVe6" target='_blank'>
