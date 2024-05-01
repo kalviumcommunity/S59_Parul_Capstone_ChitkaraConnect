@@ -14,8 +14,8 @@ const userSchema = new mongoose.Schema({
         required : true
     },
     occupation : {
-        type : String,
-        default : "Student"
+        type : Array,
+        required : true
     },
     contact : {
         type : Number,
