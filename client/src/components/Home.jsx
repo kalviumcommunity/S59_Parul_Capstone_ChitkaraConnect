@@ -6,6 +6,7 @@ import ChitkUni from '../assets/ChitkUni.png'
 import rectangle from '../assets/rectangle.png'
 import ContactUs from './ContactUs'
 import Footer from './Footer'
+import Login from './Login'
 import '../App.css'
 
 export default function Home() {
@@ -74,6 +75,7 @@ export default function Home() {
                     </Link>
                 </div>
             </div>
+            <Login />
             <ContactUs />
             <Footer />
         </div>
