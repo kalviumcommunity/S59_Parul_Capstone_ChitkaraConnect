@@ -21,7 +21,7 @@ export default function Login() {
                             </div>
                         </div>
                         <div className='my-4 flex'>
-                            <input type="text" placeholder='Enter password' className='px-4 py-[.7vw] text-[1.3vw] w-[28vw] rounded-l-md' />
+                            <input type="password" placeholder='Enter password' className='px-4 py-[.7vw] text-[1.3vw] w-[28vw] rounded-l-md' />
                             <div className='bg-red-500 w-[4.5vw] h-[4vw] flex items-center justify-center rounded-r-md'>
                                 <img src={Eye} alt="password" className='w-[2.5vw] h-[2.5vw] cursor-pointer' />
                             </div>
