@@ -14,3 +14,7 @@
 .navbar {
     font-family: "Roboto", sans-serif;
 }
+
+.focusSelect:focus {
+    outline: none;
+}
