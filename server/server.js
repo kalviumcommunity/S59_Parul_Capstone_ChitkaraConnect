@@ -1,10 +1,12 @@
+const cors = require('cors')
 const express = require('express')
 const App = express()
-const port = 8080
 const { connectDB } = require('./db.js')
 const userRoutes = require('./Routes/userRoutes.js')
+const port = process.env.PORT || 8080
 
 connectDB()
+App.use(cors())
 App.use(express.json())
 App.use('/user', userRoutes)
 
