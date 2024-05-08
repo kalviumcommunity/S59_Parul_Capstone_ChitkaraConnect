@@ -1,4 +1,5 @@
 const userModel = require('../Schemas/userschema')
+const bcrypt = require('bcrypt')
 
 const getAllUsers = async (req, res) => {
     try {
@@ -13,12 +14,12 @@ const getAllUsers = async (req, res) => {
 
 const registerUsers = async (req, res) => {
     try {
-        console.log(req.body)
         const existingUser = await userModel.findOne({ email: req.body.email })
         if (existingUser) {
             console.log("User already exists")
             return res.status(409).json({ message: "User already exists with this email" })
         }
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
         const newUser = new userModel({
             name: req.body.name,
@@ -26,7 +27,7 @@ const registerUsers = async (req, res) => {
             email: req.body.email,
             occupation: req.body.occupation,
             contact: req.body.contact,
-            password: req.body.password
+            password: hashedPassword
         })
         const user = await newUser.save()
         res.status(201).json(user)
@@ -45,7 +46,9 @@ const loginUser = async (req, res) => {
         if(!user) {
             return res.status(404).json({message: "User not found"})
         }
-        if(user.password !== password){
+
+        const isPasswordValid = await bcrypt.compare(password, user.password)
+        if(!isPasswordValid){
             return res.status(401).json({message: "Invalid password"})
         }
         
