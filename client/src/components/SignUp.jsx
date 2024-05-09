@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 import Logo from '../assets/logo.jpg'
 import User from '../assets/user.png'
 import Email from '../assets/mail.png'
@@ -34,8 +35,10 @@ export default function SignUp() {
         axios.post('http://localhost:8080/user/register', data)
             .then(response => {
                 console.log(response.data)
+                toast.success("Registered Successfully!")
             })
             .catch(error => {
+                toast.error("SignUp failed! Try again later")
                 console.log("Error posting user:", error)
             })
     }
@@ -75,14 +78,14 @@ export default function SignUp() {
                         {errors.name && <p className='text-red-500 text-[1vw]'>{errors.name.message}</p>}
                         <div className='flex items-center gap-1 px-4 mt-3 border-2 rounded-xl'>
                             <img src={Email} alt="email" className='w-[1.7vw] h-[1.7vw]' />
-                            <input type="email" 
+                            <input type="email"
                                 placeholder='Enter your email'
                                 className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium'
                                 {...register("email", {
                                     required: "Please enter the email",
                                     minLength: { value: 3, message: "Email should be of minimum 3 characters." },
                                     maxLength: { value: 30, message: "Email should be not more than 30 characters long" }
-                                })} 
+                                })}
                             />                         </div>
                         {errors.email && <p className='text-red-500 text-[1vw]'>{errors.email.message}</p>}
                         <label className="block text-gray-700 text-base mt-3 font-semibold ">Choose your occupation:</label>
@@ -101,12 +104,17 @@ export default function SignUp() {
                             </div>
                         </div>
 
-                        {(occupation == 'student' || occupation == 'faculty') &&
+                        {(occupation === 'student' || occupation === 'faculty') && (
                             <div className='flex items-center gap-1 px-4 mt-3 border-2 rounded-xl'>
-                                <img src={UniId} alt='id' className='w-[1.7vw] h-[1.7vw]'></img>
-                                <input placeholder={`Enter your ${occupation} ID`} value={id} onChange={(e) => setId(e.target.value)} className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium' />
+                                <img src={UniId} alt='id' className='w-[1.7vw] h-[1.7vw]' />
+                                <input
+                                    placeholder={`Enter your ${occupation} ID`}
+                                    value={id}
+                                    onChange={(e) => setId(e.target.value)}
+                                    className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium'
+                                />
                             </div>
-                        }
+                        )}
 
                         <div className='flex items-center gap-1 px-4 mt-3 border-2 rounded-xl'>
                             <img src={Telephone} alt="contact" className='w-[1.7vw] h-[1.7vw]' />

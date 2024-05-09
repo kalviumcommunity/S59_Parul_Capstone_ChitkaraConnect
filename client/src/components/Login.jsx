@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+import setCookie from '../resources/setCookie'
 import Email from '../assets/emailIcon.png'
 import Eye from '../assets/eye.png'
 import UniStudent from '../assets/UniStudent.png'
@@ -18,8 +20,17 @@ export default function Login() {
         axios.post('http://localhost:8080/user/login', data)
             .then(response => {
                 console.log(response.data)
+                try {
+                    setCookie('token', response.data.token, 1)
+                    toast.success("Login Successfull!")
+                }
+                catch (error) {
+                    toast.error(response.message)
+                    console.log("Error while setting up cookie", error)
+                }  
             })
             .catch(error => {
+                toast.error("Login failed")
                 console.log("Error posting user:", error)
             })
     }
