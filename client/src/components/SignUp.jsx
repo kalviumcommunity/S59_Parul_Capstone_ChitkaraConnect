@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 import Logo from '../assets/logo.jpg'
 import User from '../assets/user.png'
 import Email from '../assets/mail.png'
@@ -34,8 +35,10 @@ export default function SignUp() {
         axios.post('http://localhost:8080/user/register', data)
             .then(response => {
                 console.log(response.data)
+                toast.success("Registered Successfully!")
             })
             .catch(error => {
+                toast.error("SignUp failed! Try again later")
                 console.log("Error posting user:", error)
             })
     }
@@ -60,14 +63,31 @@ export default function SignUp() {
                     <form onSubmit={handleSubmit(onSubmit)} className='w-[32vw] mt-6 pr-2 overflow-y-scroll'>
                         <div className='flex items-center gap-1 px-4 border-2 rounded-xl'>
                             <img src={User} alt="username" className='w-[1.7vw] h-[1.7vw]' />
-                            <input type="text" placeholder='Enter your name' {...register('name', { required: true })} className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium' />
+                            <input
+                                type="text"
+                                placeholder='Enter your name'
+                                className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium'
+                                {...register('name', {
+                                    required: "Please enter the name",
+                                    minLength: { value: 3, message: "Name should be of minimum 3 characters." },
+                                    maxLength: { value: 30, message: "Name should be not more than 30 characters long" }
+                                })}
+                            />
+
                         </div>
-                        {errors.name && <p className='text-red-500 text-[1vw]'>Name is required.</p>}
+                        {errors.name && <p className='text-red-500 text-[1vw]'>{errors.name.message}</p>}
                         <div className='flex items-center gap-1 px-4 mt-3 border-2 rounded-xl'>
                             <img src={Email} alt="email" className='w-[1.7vw] h-[1.7vw]' />
-                            <input type="email" placeholder='Enter your email' {...register('email', { required: true })} className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium' />
-                        </div>
-                        {errors.email && <p className='text-red-500 text-[1vw]'>Email is required.</p>}
+                            <input type="email"
+                                placeholder='Enter your email'
+                                className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium'
+                                {...register("email", {
+                                    required: "Please enter the email",
+                                    minLength: { value: 3, message: "Email should be of minimum 3 characters." },
+                                    maxLength: { value: 30, message: "Email should be not more than 30 characters long" }
+                                })}
+                            />                         </div>
+                        {errors.email && <p className='text-red-500 text-[1vw]'>{errors.email.message}</p>}
                         <label className="block text-gray-700 text-base mt-3 font-semibold ">Choose your occupation:</label>
                         <div className='my-4 mx-4 flex flex justify-start text-base'>
                             <div className='mr-2'>
@@ -84,12 +104,17 @@ export default function SignUp() {
                             </div>
                         </div>
 
-                        {(occupation == 'student' || occupation == 'faculty') &&
+                        {(occupation === 'student' || occupation === 'faculty') && (
                             <div className='flex items-center gap-1 px-4 mt-3 border-2 rounded-xl'>
-                                <img src={UniId} alt='id' className='w-[1.7vw] h-[1.7vw]'></img>
-                                <input placeholder={`Enter your ${occupation} ID`} value={id} onChange={(e) => setId(e.target.value)} className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium' />
+                                <img src={UniId} alt='id' className='w-[1.7vw] h-[1.7vw]' />
+                                <input
+                                    placeholder={`Enter your ${occupation} ID`}
+                                    value={id}
+                                    onChange={(e) => setId(e.target.value)}
+                                    className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium'
+                                />
                             </div>
-                        }
+                        )}
 
                         <div className='flex items-center gap-1 px-4 mt-3 border-2 rounded-xl'>
                             <img src={Telephone} alt="contact" className='w-[1.7vw] h-[1.7vw]' />
@@ -98,9 +123,21 @@ export default function SignUp() {
                         {errors.contact && <p className='text-red-500 text-[1vw]'>Contact number is required.</p>}
                         <div className='flex items-center gap-1 px-4 mt-3 border-2 rounded-xl'>
                             <img src={Password} alt="password" className='w-[1.7vw] h-[1.7vw]' />
-                            <input type="password" pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,16})" placeholder='Your password' {...register('password', { required: true })} className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium' />
+                            <input
+                                type="password"
+                                placeholder='Your password'
+                                className='focusSelect text-base w-[30vw] my-3 rounded px-2 font-medium'
+                                {...register('password', {
+                                    required: "Please enter the password",
+                                    minLength: {
+                                        value: 10,
+                                        message: "The password should be at least 10 characters long",
+                                    }
+                                })}
+                            />
+
                         </div>
-                        {errors.password && <p className='text-red-500 text-[1vw]'>Password is required.</p>}
+                        {errors.password && <p className='text-red-500 text-[1vw]'>{errors.password.message}</p>}
                         <div className='flex flex-col justify-center my-5'>
                             <button type="submit" className='text-white bg-red-500 px-6 py-[.6vw] rounded-md font-bold text-base transition-transform hover:translate-y-[-2px] hover:shadow hover:shadow-white'>Sign Up</button>
                             <Link to="/Login">

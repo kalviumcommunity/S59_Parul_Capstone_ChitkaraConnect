@@ -1,4 +1,7 @@
 const userModel = require('../Schemas/userschema')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const SECRET = process.env.SECRET
 
 const getAllUsers = async (req, res) => {
     try {
@@ -13,12 +16,12 @@ const getAllUsers = async (req, res) => {
 
 const registerUsers = async (req, res) => {
     try {
-        console.log(req.body)
         const existingUser = await userModel.findOne({ email: req.body.email })
         if (existingUser) {
             console.log("User already exists")
             return res.status(409).json({ message: "User already exists with this email" })
         }
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
         const newUser = new userModel({
             name: req.body.name,
@@ -26,7 +29,7 @@ const registerUsers = async (req, res) => {
             email: req.body.email,
             occupation: req.body.occupation,
             contact: req.body.contact,
-            password: req.body.password
+            password: hashedPassword
         })
         const user = await newUser.save()
         res.status(201).json(user)
@@ -43,13 +46,16 @@ const loginUser = async (req, res) => {
         const user = await userModel.findOne({ email })
 
         if(!user) {
-            return res.status(404).json({message: "User not found"})
+            return res.status(404).json({ message: "User not found" })
+        } 
+        const hashedPass=await bcrypt.hash(password, 10)
+
+        const isPasswordValid = await bcrypt.compare(password, user.password)
+        if(!isPasswordValid){
+            return res.status(401).json({ message: "Invalid password" })
         }
-        if(user.password !== password){
-            return res.status(401).json({message: "Invalid password"})
-        }
-        
-        res.status(200).json({message: "Login successfull", user})
+        const token = jwt.sign({ userID: user._id, userName: user.username, email: user.email }, SECRET, { expiresIn: '5h'})
+        res.status(200).json({ message: "Login successfull", token: token })
     } catch(err){
         console.log("Login failed. error:", err)
         res.status(500).json({message: "Login failed! Try again later."})
