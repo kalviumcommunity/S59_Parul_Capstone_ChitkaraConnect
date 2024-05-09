@@ -48,7 +48,6 @@ const loginUser = async (req, res) => {
         if(!user) {
             return res.status(404).json({ message: "User not found" })
         } 
-        const hashedPass=await bcrypt.hash(password, 10)
 
         const isPasswordValid = await bcrypt.compare(password, user.password)
         if(!isPasswordValid){
