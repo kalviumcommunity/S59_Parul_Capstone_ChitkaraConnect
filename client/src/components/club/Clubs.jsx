@@ -19,27 +19,6 @@ export default function Clubs() {
                         <div className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
                             <img src={Search} alt="csi" className='max-w-full max-h-full' />
                         </div>
-                        <div className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
-                            <img src={Search} alt="csi" className='max-w-full max-h-full' />
-                        </div>
-                        <div className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
-                            <img src={Search} alt="csi" className='max-w-full max-h-full' />
-                        </div>
-                        <div className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
-                            <img src={Search} alt="csi" className='max-w-full max-h-full' />
-                        </div>
-                        <div className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
-                            <img src={Search} alt="csi" className='max-w-full max-h-full' />
-                        </div>
-                        <div className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
-                            <img src={Search} alt="csi" className='max-w-full max-h-full' />
-                        </div>
-                        <div className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
-                            <img src={Search} alt="csi" className='max-w-full max-h-full' />
-                        </div>
-                        <div className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
-                            <img src={Search} alt="csi" className='max-w-full max-h-full' />
-                        </div>
                     </div>
                 </div>
             </div>
