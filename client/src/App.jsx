@@ -7,6 +7,8 @@ import './index.css'
 import './App.css'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
+import Clubs from './components/club/Clubs'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/SignUp' element={<SignUp />} />
         <Route path='/Login' element={<Login />} />
+        <Route path='/Clubs' element={<Clubs />} />
+        <Route path='/Navbar' element={<Navbar />} />
       </Routes>
       <ToastContainer />
     </>
