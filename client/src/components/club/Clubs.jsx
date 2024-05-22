@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar';
 import Search from '../../assets/search.png';
-import Carousel from '../Carousel'
-import Club from '../../assets/IETE.jpg'
 
 export default function Clubs() {
     const [clubs, setClubs] = useState([]);
@@ -27,7 +25,6 @@ export default function Clubs() {
             <div className='flex w-full'>
                 <div className='bg-black h-[100vh] w-[50vw]'>
                     <h1 className='text-white text-[4.3vw] font-bold text-center'>EXPLORE <span className='text-red-500'>CLUBS</span></h1>
-                    <Carousel />
                 </div>
                 <div className='w-[50vw] h-[100vh] flex flex-col items-center pt-8'>
                     <div className='py-4 flex'>
@@ -38,7 +35,6 @@ export default function Clubs() {
                         {clubs.map((club) => (
                             <div key={club._id} className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
                                 <div className='text-center'>
-                                    <img src={Club} alt="" />
                                     <p className='text-[1.25vw] font-semibold text-black'>{club.clubName}</p>
                                 </div>
                             </div>
