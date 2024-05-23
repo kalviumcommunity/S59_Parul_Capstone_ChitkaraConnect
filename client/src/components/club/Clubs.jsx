@@ -3,7 +3,7 @@ import axios from 'axios';
 import Navbar from '../Navbar';
 import Search from '../../assets/search.png';
 import Carousel from '../Carousel'
-import Club from '../../assets/IETE.jpg'
+import IETE from '../../assets/IETE.jpg'
 
 export default function Clubs() {
     const [clubs, setClubs] = useState([]);
@@ -38,7 +38,7 @@ export default function Clubs() {
                         {clubs.map((club) => (
                             <div key={club._id} className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
                                 <div className='text-center'>
-                                    <img src={Club} alt="" />
+                                    <img src={IETE} alt="" />
                                     <p className='text-[1.25vw] font-semibold text-black'>{club.clubName}</p>
                                 </div>
                             </div>
