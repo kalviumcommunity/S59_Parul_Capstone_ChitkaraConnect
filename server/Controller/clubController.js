@@ -29,4 +29,26 @@ const getOneClubData = async (req, res) => {
     }
 }
 
-module.exports = { getClubData, getOneClubData }
+// to post club data
+const postClubData = async (req, res) => {
+    const newClub = new clubModel({
+        clubName: req.body.clubName,
+        clubEmail: req.body.clubEmail,
+        clubContact: req.body.clubContact,
+        clubSlogan: req.body.clubSlogan,
+        clubHeads: req.body.clubHeads,
+        clubMentors: req.body.clubMentors,
+        clubMembers: req.body.clubMembers,
+        clubDesc: req.body.clubDesc
+    })
+    try {
+        const savedClub = await newClub.save()
+        res.status(201).json(savedClub)
+    }
+    catch (error) {
+        console.log('Error Posting data: ', error.message)
+        res.status(500).json({ message: "Failed to Post. Could not Post data" })
+    }
+}
+
+module.exports = { getClubData, getOneClubData, postClubData }
