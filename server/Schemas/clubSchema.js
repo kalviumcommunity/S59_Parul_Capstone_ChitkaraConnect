@@ -32,6 +32,10 @@ const clubSchema = new mongoose.Schema({
     clubDesc : {
         type : String,
         required : true
+    },
+    clubLogo : {
+        type : String,
+        required : false
     }
 })
 

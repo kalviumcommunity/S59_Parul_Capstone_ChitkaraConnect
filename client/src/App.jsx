@@ -9,6 +9,7 @@ import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Clubs from './components/club/Clubs'
 import Navbar from './components/Navbar'
+import ClubsProfile from './components/club/ClubsProfile';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/Login' element={<Login />} />
         <Route path='/Clubs' element={<Clubs />} />
         <Route path='/Navbar' element={<Navbar />} />
+        <Route path='/Club/:clubId' element={<ClubsProfile />} />
       </Routes>
       <ToastContainer />
     </>
