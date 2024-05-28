@@ -35,7 +35,7 @@ const clubSchema = new mongoose.Schema({
     },
     clubLogo : {
         type : String,
-        required : false
+        default : 'https://i.seadn.io/gae/5pzW7VzI20nfDGdGuqXQwx4f40qrVyoNtPYw962kR0uCWrVI4ik1npRLDt3pwj7XfQS0MLD9vPucCvxs7cHp0F0R0XDCwX4BNb_r8Q?auto=format&dpr=1&w=3840'
     }
 })
 
