@@ -4,10 +4,10 @@ import Navbar from '../Navbar';
 import Search from '../../assets/search.png';
 import Carousel from '../Carousel'
 import IETE from '../../assets/IETE.jpg'
+import { Link } from 'react-router-dom'
 
 export default function Clubs() {
-    const [clubs, setClubs] = useState([]);
-
+    const [clubs, setClubs] = useState([])
     useEffect(() => {
         const fetchClubs = async () => {
             try {
@@ -37,10 +37,12 @@ export default function Clubs() {
                     <div className='flex flex-wrap justify-center px-4 pt-4 gap-20 overflow-y-scroll'>
                         {clubs.map((club) => (
                             <div key={club._id} className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
-                                <div className='text-center'>
-                                    <img src={IETE} alt="" />
-                                    <p className='text-[1.25vw] font-semibold text-black'>{club.clubName}</p>
-                                </div>
+                                <Link to={`/Club/${club._id}`}>
+                                    <div className='text-center'>
+                                        <img src={IETE} alt="" />
+                                        <p className='text-[1.25vw] font-semibold text-black'>{club.clubName}</p>
+                                    </div>
+                                </Link>
                             </div>
                         ))}
                     </div>
