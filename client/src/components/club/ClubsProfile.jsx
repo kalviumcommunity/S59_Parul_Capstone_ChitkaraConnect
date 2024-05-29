@@ -58,7 +58,12 @@ export default function ClubsProfile() {
           </div>
         );
       default:
-        return null;
+        return (
+          <div className='p-4'>
+            <h2 className='text-xl font-semibold'>Invalid Tab</h2>
+            <p>Click on one of the tabs to know more about club.</p>
+          </div>
+        )
     }
   };
 
