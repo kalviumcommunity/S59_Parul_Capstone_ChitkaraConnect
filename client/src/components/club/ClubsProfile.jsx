@@ -29,11 +29,11 @@ export default function ClubsProfile() {
     const headMembers = club.clubHeads || [];
 
     return headMembers.map(head => (
-      <div key={head.name}>
-        <h3 className='text-lg font-medium'>{head.role}</h3>
-        <div>
-          <img src={head.image} alt={head.name} className='w-16 h-16 rounded-full' />
-          <p>{head.name}</p>
+      <div key={head.name} className='flex flex-col justify-center items-center text-center'>
+        <div className='flex flex-col justify-center items-center'>
+          <img src={head.image} alt={head.name} className='w-[10vw] h-[10vw] rounded-full' />
+          <p className='text-lg font-semibold'>{head.name}</p>
+          <h3 className='text-md font-semibold italic text-gray-700'>{head.role}</h3>
         </div>
       </div>
     ));
@@ -41,9 +41,10 @@ export default function ClubsProfile() {
 
   const renderMembers = () => {
     return club.clubMembers && club.clubMembers.map(member => (
-      <div key={member.name} className='flex gap-4'>
-        <p>{member.name}</p>
-        <p>{member.department}</p>
+      <div key={member.name} className='flex flex-col justify-center items-center text-center mb-6 mt-2'>
+        <img src={member.image} alt={member.name} className='w-[10vw] h-[10vw] rounded-full' />
+        <p className='text-lg font-semibold'>{member.name}</p>
+        <p className='text-sm italic text-gray-700'>{member.department}</p>
       </div>
     ));
   };
@@ -55,31 +56,39 @@ export default function ClubsProfile() {
       return <p>No faculty coordinators found.</p>;
     }
 
-    return facultyCoordinators.map(mentor => (
-      <div key={mentor.name}>
-        <img src={mentor.image} alt={mentor.name} className='w-16 h-16 rounded-full' />
-        <p>{mentor.name}</p>
-        <p>{mentor.specialty}</p>
+    return (
+      <div className='flex justify-center items-center flex-wrap gap-[15%]'>
+        {facultyCoordinators.map(mentor => (
+          <div key={mentor.name} className='flex flex-col justify-center items-center text-center mb-6 mt-2'>
+            <img src={mentor.image} alt={mentor.name} className='w-[10vw] h-[10vw] rounded-full' />
+            <p className='text-lg font-semibold'>{mentor.name}</p>
+            <p className='text-sm italic text-gray-700'>{mentor.specialty}</p>
+          </div>
+        ))}
       </div>
-    ));
+    );
   };
+
 
   const renderInfoTab = () => {
     switch (activeTab) {
       case 'Members':
         return (
           <div className='p-4'>
-            {renderHeadMembers()}
-            <div>
-              <h3 className='text-lg font-medium'>Members</h3>
-              {renderMembers()}
+            <div className='flex justify-center items-center flex-wrap gap-[15%]'>
+              {renderHeadMembers()}
+            </div>
+            <div className='flex flex-col mx-6 mt-10'>
+              <h3 className='text-2xl font-semibold mt-16 text-center underline text-red-500'>CLUB MEMBERS</h3>
+              <div className='flex justify-center items-center flex-wrap gap-[15%]'>
+                {renderMembers()}
+              </div>
             </div>
           </div>
         );
       case 'Faculty Coordinator':
         return (
           <div className='p-4'>
-            <h2 className='text-xl font-semibold'>Faculty Coordinators</h2>
             {renderFacultyCoordinators()}
           </div>
         );
