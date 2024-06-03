@@ -69,7 +69,6 @@ export default function ClubsProfile() {
     );
   };
 
-
   const renderInfoTab = () => {
     switch (activeTab) {
       case 'Members':
@@ -131,13 +130,33 @@ export default function ClubsProfile() {
           <div>
             <img src={bgImg} alt="" className='h-[38vh] w-full' />
           </div>
-          <div className='bg-black flex justify-center py-4'>
+          <div className='bg-black flex justify-center pt-4'>
             <div className='w-[73vw]'>
-              <div className=' mt-4 flex justify-around text-lg bg-red-400 h-[7vh] items-center font-medium'>
-                <div onClick={() => setActiveTab('Members')} className='px-4 cursor-pointer'>Members</div>
-                <div onClick={() => setActiveTab('Faculty Coordinator')} className='px-4 cursor-pointer'>Faculty Coordinator</div>
-                <div onClick={() => setActiveTab('Events')} className='px-4 cursor-pointer'>Events</div>
-                <div onClick={() => setActiveTab('Contacts')} className='px-4 cursor-pointer'>Contacts</div>
+              <div className='mt-4 flex justify-around text-lg bg-red-400 h-[7vh] items-center font-medium'>
+                <div 
+                  onClick={() => setActiveTab('Members')} 
+                  className={`px-4 h-full w-full flex items-center justify-center cursor-pointer text-center ${activeTab === 'Members' ? 'bg-white text-black' : ''}`}
+                >
+                  Members
+                </div>
+                <div 
+                  onClick={() => setActiveTab('Faculty Coordinator')} 
+                  className={`px-4 h-full w-full flex items-center justify-center cursor-pointer text-center ${activeTab === 'Faculty Coordinator' ? 'bg-white text-black' : ''}`}
+                >
+                  Faculty Coordinator
+                </div>
+                <div 
+                  onClick={() => setActiveTab('Events')} 
+                  className={`px-4 h-full w-full flex items-center justify-center cursor-pointer text-center ${activeTab === 'Events' ? 'bg-white text-black' : ''}`}
+                >
+                  Events
+                </div>
+                <div 
+                  onClick={() => setActiveTab('Contacts')} 
+                  className={`px-4 h-full w-full flex items-center justify-center cursor-pointer text-center ${activeTab === 'Contacts' ? 'bg-white text-black' : ''}`}
+                >
+                  Contacts
+                </div>
               </div>
               <div className='bg-white'>
                 {renderInfoTab()}
