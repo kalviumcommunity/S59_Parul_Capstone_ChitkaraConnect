@@ -63,6 +63,7 @@ export default function ClubsProfile() {
             <img src={mentor.image} alt={mentor.name} className='w-[10vw] h-[10vw] rounded-full' />
             <p className='text-lg font-semibold'>{mentor.name}</p>
             <p className='text-sm italic text-gray-700'>{mentor.specialty}</p>
+            <p className=''>{mentor.contact}</p>
           </div>
         ))}
       </div>
@@ -118,15 +119,17 @@ export default function ClubsProfile() {
   return (
     <>
       <Navbar />
-      <div className='flex'>
-        <div className='w-[25vw] py-8 flex flex-col gap-4 items-center'>
+      <div className='flex h-screen'>
+        <div className='w-[25vw] py-8 flex flex-col items-center fixed h-full'>
           <div>
-            <img src={club.clubLogo} alt={`${club.clubName} logo`} className='w-[13vw] h-[13vw] p-1 rounded-[50%]' />
+            <img src={club.clubLogo} alt={`${club.clubName} logo`} className='w-[13vw] h-[13vw] p-1 my-2 rounded-[50%]' />
           </div>
           <div><h1 className='text-2xl font-bold'>{club.clubName}</h1></div>
+          <div className='text-md px-4 font-semibold text-gray-500'>{club.clubSlogan} </div>
+          <div className='text-md px-4 py-6'>{club.clubDesc}</div>
         </div>
 
-        <div className='w-[75vw]'>
+        <div className='w-[75vw] ml-[25vw] overflow-auto'>
           <div>
             <img src={bgImg} alt="" className='h-[38vh] w-full' />
           </div>
