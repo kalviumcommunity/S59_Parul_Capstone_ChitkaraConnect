@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import bgImg from '../assets/Home.jpg'
 import arrow from '../assets/download.png'
@@ -10,8 +10,14 @@ import Login from './Login'
 import '../App.css'
 
 export default function Home() {
+    const exploreSectionRef = useRef(null);
+
+    const scrollToExploreSection = () => {
+        exploreSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
-        <div >
+        <div>
             <nav className='flex flex-col h-[100vh] bg-cover' style={{ backgroundImage: `url(${bgImg})` }}>
                 <div className="flex justify-end align-center my-4 navbar">
                     <div className='flex align-center mt-3 mr-12 p-2'>
@@ -45,17 +51,22 @@ export default function Home() {
                         CHITKARA | <p className='text-red-500'>CONNECT</p>
                     </div>
                 </div>
-                <div className='flex flex-col justify-center '>
+                <div className='flex flex-col justify-center'>
                     <div className='text-white flex justify-center align-center text-3xl font-normal'>
                         Discover here
                     </div>
                     <div className='w-full h-14 flex justify-center'>
-                        <img src={arrow} alt="arrow" className='w-10 h-10 m-4 cursor-pointer' />
+                        <img
+                            src={arrow}
+                            alt="arrow"
+                            className='w-10 h-10 m-4 cursor-pointer transition-transform transform hover:scale-110'
+                            onClick={scrollToExploreSection}
+                        />
                     </div>
                 </div>
             </nav>
 
-            <div className='my-16'>
+            <div ref={exploreSectionRef} className='my-16'>
                 <div className='text-6xl font-extrabold mx-10'>EXPLORE AT CHITKARA</div>
                 <div className='my-8 flex'>
                     <div className='w-56 h-72 bg-red-500'></div>
