@@ -59,8 +59,10 @@ export default function Home() {
                         <img
                             src={arrow}
                             alt="arrow"
-                            className='w-10 h-10 m-4 cursor-pointer transition-transform transform hover:scale-110'
+                            className='w-10 h-10 m-4 cursor-pointer transition-transform transform hover:scale-110 focus:scale-11'
                             onClick={scrollToExploreSection}
+                            tabIndex={0}
+                            onKeyDown={(e) => { if (e.key === 'Enter') scrollToExploreSection() }} 
                         />
                     </div>
                 </div>
