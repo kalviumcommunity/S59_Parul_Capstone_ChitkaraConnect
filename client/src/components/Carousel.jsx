@@ -3,9 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import CarouselOne from '../assets/IETE.jpg'
-import CarouselTwo from '../assets/SufyClub.jpg'
-import CarouselThree from '../assets/MathPirates.jpg'
+import CarouselOne from '../assets/clubsProfile 1.jpg'
+import CarouselTwo from '../assets/Nati.jpg'
+import CarouselThree from '../assets/Crowd.jpg'
 
 
 export default function SimpleSlider() {
@@ -16,15 +16,15 @@ export default function SimpleSlider() {
         slidesToScroll: 1,
         autoplay: true,
         speed: 3000,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 3000,
         cssEase: "linear",
     };
 
     return (
-        <div style={{ margin: "auto", width: "32vw", marginTop : "50px" }}>
+        <div style={{ margin: "auto", width: "33vw", marginTop : "80px" }}>
             <Slider {...settings}>
                 <img src={CarouselOne} alt="club" className="rounded"/>
-                <img src={CarouselTwo} alt="club" className="rounded"/>
+                <img src={CarouselTwo} alt="socieites" className="rounded"/>
                 <img src={CarouselThree} alt="club" className="rounded"/>
             </Slider>
         </div>)

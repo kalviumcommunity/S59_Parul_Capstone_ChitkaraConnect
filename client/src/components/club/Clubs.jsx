@@ -36,11 +36,11 @@ export default function Clubs() {
                     </div>
                     <div className='flex flex-wrap justify-center px-4 pt-4 gap-20 overflow-y-scroll'>
                         {clubs.map((club) => (
-                            <div key={club._id} className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-4 border-0 flex items-center justify-center rounded'>
+                            <div key={club._id} className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-8 border-0 flex items-center justify-center rounded'>
                                 <Link to={`/Club/${club._id}`}>
                                     <div className='text-center'>
                                         <img src={IETE} alt="" />
-                                        <p className='text-[1.25vw] font-semibold text-black'>{club.clubName}</p>
+                                        <p className='text-[1.2vw] font-semibold text-black'>{club.clubName}</p>
                                     </div>
                                 </Link>
                             </div>
