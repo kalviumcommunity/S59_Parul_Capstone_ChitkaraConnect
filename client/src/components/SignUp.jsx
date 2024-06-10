@@ -45,7 +45,7 @@ export default function SignUp() {
 
     return (
         <div className='w-full h-[100vh] w-[100vw] flex items-center justify-center'>
-            <div className="w-[85vw] h-[43vw] m-16 rounded-xl shadow-xl flex justify-between items-center p-5">
+            <div className="w-[85vw] h-[43vw] m-16 rounded-xl shadow-xl flex justify-between items-center p-5" style={{ backgroundColor: 'white' }}>
                 <div className='bg-red-500 w-[50vw] h-[100%] rounded-l-xl rounded-r-[8vw] p-6 text-white flex flex-col'>
                     <p className='text-3xl font-semibold text-center mt-10'>Hello</p>
                     <p className='font-semibold text-[2.7vw] text-center mb-[5vw]'>Welcome to</p>
@@ -55,10 +55,12 @@ export default function SignUp() {
                     </div>
                 </div>
                 <div className='flex flex-col p-10 w-[50vw] h-[100%] mx-2 py-4'>
-                    <div className='flex justify-between items-center'>
-                        <h1 className='text-red-500 font-bold text-4xl my-2'>Sign Up!</h1>
-                        <img src={Close} alt="close" className='w-[3.5vw] h-[3.5vw] hover:shadow hover:shadow-gray-500 rounded-md' />
-                    </div>
+                    <Link to="/">
+                        <div className='flex justify-between items-center'>
+                            <h1 className='text-red-500 font-bold text-4xl my-2'>Sign Up!</h1>
+                            <img src={Close} alt="close" className='w-[3.5vw] h-[3.5vw] hover:shadow hover:shadow-gray-500 rounded-md' />
+                        </div>
+                    </Link>
                     <p className='py-1 text-[1.1vw]'>Hey! Enter you details to be the part of the Chitkara Connect.</p>
                     <form onSubmit={handleSubmit(onSubmit)} className='w-[32vw] mt-6 pr-2 overflow-y-scroll'>
                         <div className='flex items-center gap-1 px-4 border-2 rounded-xl'>

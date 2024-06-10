@@ -38,7 +38,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className='mt-3 py-2 px-3'>
-                        <Link to="/register" className="text-white mt-3 mr-12 py-2 px-3 font-normal font-sans text-lg bg-red-500 rounded">
+                        <Link to="/SignUp" className="text-white mt-3 mr-12 py-2 px-3 font-normal font-sans text-lg bg-red-500 rounded">
                             GET STARTED
                         </Link>
                     </div>
