@@ -1,24 +1,47 @@
-import React, { useRef } from 'react'
-import { Link } from 'react-router-dom'
-import bgImg from '../assets/Home.jpg'
-import arrow from '../assets/download.png'
-import ChitkUni from '../assets/ChitkUni.png'
-import rectangle from '../assets/rectangle.png'
-import ContactUs from './ContactUs'
-import Footer from './Footer'
-import Login from './Login'
-import '../App.css'
+import React, { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import bgImg from '../assets/Home.jpg';
+import arrow from '../assets/download.png';
+import ChitkUni from '../assets/ChitkUni.png';
+import rectangle from '../assets/rectangle.png';
+import scrollup from '../assets/scrollup.png';
+import ContactUs from './ContactUs';
+import Footer from './Footer';
+import Login from './Login';
+import '../App.css';
 
 export default function Home() {
     const exploreSectionRef = useRef(null);
+    const navRef = useRef(null);
+    const [showScrollButton, setShowScrollButton] = useState(false);
 
     const scrollToExploreSection = () => {
         exploreSectionRef.current.scrollIntoView({ behavior: 'smooth' });
     };
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (navRef.current) {
+                const navHeight = navRef.current.offsetHeight;
+                const scrollPosition = window.scrollY;
+                setShowScrollButton(scrollPosition > navHeight / 2);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <div>
-            <nav className='flex flex-col h-[100vh] bg-cover' style={{ backgroundImage: `url(${bgImg})` }}>
+            <nav ref={navRef} className='flex flex-col h-[100vh] bg-cover' style={{ backgroundImage: `url(${bgImg})` }}>
                 <div className="flex justify-end align-center my-4 navbar">
                     <div className='flex align-center mt-3 mr-12 p-2'>
                         <div className='mx-6'>
@@ -62,7 +85,7 @@ export default function Home() {
                             className='w-10 h-10 m-4 cursor-pointer transition-transform transform hover:scale-110 focus:scale-11'
                             onClick={scrollToExploreSection}
                             tabIndex={0}
-                            onKeyDown={(e) => { if (e.key === 'Enter') scrollToExploreSection() }} 
+                            onKeyDown={(e) => { if (e.key === 'Enter') scrollToExploreSection() }}
                         />
                     </div>
                 </div>
@@ -77,7 +100,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-16 mx-24 my-10">
                     <Link to="https://maps.app.goo.gl/qzqUPcT2Rhm7iFVe6" target='_blank'>
-                        <button className="text-xl bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-transform hover:translate-y-[-2px]" >
+                        <button className="text-xl bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-transform hover:translate-y-[-2px]">
                             View Location
                         </button>
                     </Link>
@@ -87,6 +110,12 @@ export default function Home() {
                         </button>
                     </Link>
                 </div>
+
+                {showScrollButton && (
+                    <button className='fixed bottom-8 right-6 bg-gray-400 hover:bg-red-600 rounded-[50%] transition-transform hover:translate-y-[-3px]' onClick={scrollToTop}>
+                        <img src={scrollup} alt="scroll" className='w-[5vw] h-[5vw] rounded-[45%] p-4' />
+                    </button>
+                )}
             </div>
             <Login />
             <ContactUs />
