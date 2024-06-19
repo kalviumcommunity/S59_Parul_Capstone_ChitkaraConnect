@@ -30,13 +30,18 @@ export default function Clubs() {
                     <Carousel />
                 </div>
                 <div className='w-[50vw] h-[100vh] flex flex-col items-center pt-8'>
-                    <div className='flex gap-6'>
+                    <div className='flex gap-6 items-center'>
                         <div className='py-4 flex items-center justify-center'>
                             <input type="text" placeholder='Search here...' className='border-l-2 border-t-2 border-b-2 border-gray-400 rounded-l-md px-4 py-2 w-[24vw] text-[1.25vw] font-semibold' />
                             <img src={Search} alt="search" className='w-12 h-12 p-2 rounded-r-md border-2 border-gray-400 border border-l-0 bg-red-500' />
                         </div>
-                        <div className='w-[4vw] h-[4vw]'><Link to="/NewClub"><div className='w-14 bg-red-500 text-white h-10'>+</div></Link></div>
-                    </div>
+                        <div className='w-[4vw] h-[4vw] flex items-center justify-center'>
+                            <Link to='/NewClub'>
+                                <div className='w-14 h-14 pb-1 bg-red-500 text-white flex items-center justify-center text-[2vw] font-bold rounded-full'>
+                                    +
+                                </div>
+                            </Link>
+                        </div>                    </div>
                     <div className='flex flex-wrap justify-center px-4 pt-4 gap-20 overflow-y-scroll'>
                         {clubs.map((club) => (
                             <div key={club._id} className='w-[13vw] h-[13vw] max-w-[200px] max-h-[200px] shadow shadow-gray-400 p-8 border-0 flex items-center justify-center rounded'>
