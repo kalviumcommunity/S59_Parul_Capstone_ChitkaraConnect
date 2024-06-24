@@ -5,6 +5,7 @@ import arrow from '../assets/download.png';
 import ChitkUni from '../assets/ChitkUni.png';
 import rectangle from '../assets/rectangle.png';
 import scrollup from '../assets/scrollup.png';
+import ClubCarousel from './club/ClubCarousel';
 import ContactUs from './ContactUs';
 import Footer from './Footer';
 import Login from './Login';
@@ -117,6 +118,7 @@ export default function Home() {
                     </button>
                 )}
             </div>
+            <ClubCarousel />
             <Login />
             <ContactUs />
             <Footer />
