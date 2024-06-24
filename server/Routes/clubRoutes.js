@@ -4,6 +4,6 @@ const { getClubData, getOneClubData, postClubData } = require('../Controller/clu
 
 router.get('/clubs', getClubData);
 router.get('/club/:clubID', getOneClubData);
-router.post('/clubs', postClubData);
+router.post('/addClub', postClubData);
 
-module.exports = router 
+module.exports = router
