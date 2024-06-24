@@ -18,7 +18,13 @@ const ClubCarousel = () => {
                 setClubs(response.data)
             } catch (error) {
                 console.error('Error fetching clubs:', error);
-                setError('Failed to fetch clubs. Please try again later.')
+                if (!error.response) {
+                    setError('Network error. Please check your connection.');
+                } else if (error.response.status >= 500) {
+                    setError('Server error. Please try again later.');
+                } else {
+                    setError('Unexpected error. Please try again.');
+                }
             } finally {
                 setLoading(false);
             }
